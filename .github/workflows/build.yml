@@ -62,7 +62,7 @@ jobs:
       - name: Copy device tree
         run: |
           mkdir -p $GITHUB_WORKSPACE/twrp/device/xiaomi
-          cp -r $GITHUB_WORKSPACE/device_tree/device/xiaomi/gold \
+          cp -r $GITHUB_WORKSPACE/device_tree/. \
                 $GITHUB_WORKSPACE/twrp/device/xiaomi/gold
 
       - name: Build vendorbootimage
