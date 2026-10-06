@@ -8,6 +8,6 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/omni_gold.mk
 
 COMMON_LUNCH_CHOICES := \
-    omni_gold-eng \
-    omni_gold-userdebug \
-    omni_gold-user
+    omni_gold-trunk_staging-eng \
+    omni_gold-trunk_staging-userdebug \
+    omni_gold-trunk_staging-user
