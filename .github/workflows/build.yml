@@ -65,15 +65,6 @@ jobs:
           cp -r $GITHUB_WORKSPACE/device_tree/. \
                 $GITHUB_WORKSPACE/twrp/device/xiaomi/gold/
 
-      - name: Add swap
-        run: |
-          sudo fallocate -l 4G /swapfile
-          sudo chmod 600 /swapfile
-          sudo mkswap /swapfile
-          sudo swapon /swapfile
-          free -h
-          df -h
-
       - name: Build vendorbootimage
         run: |
           cd $GITHUB_WORKSPACE/twrp
