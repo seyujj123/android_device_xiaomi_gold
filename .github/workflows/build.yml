@@ -61,19 +61,27 @@ jobs:
 
       - name: Copy device tree
         run: |
-          mkdir -p $GITHUB_WORKSPACE/twrp/device/xiaomi
+          mkdir -p $GITHUB_WORKSPACE/twrp/device/xiaomi/gold
           cp -r $GITHUB_WORKSPACE/device_tree/. \
-                $GITHUB_WORKSPACE/twrp/device/xiaomi/gold
+                $GITHUB_WORKSPACE/twrp/device/xiaomi/gold/
+
+      - name: Add swap
+        run: |
+          sudo fallocate -l 4G /swapfile
+          sudo chmod 600 /swapfile
+          sudo mkswap /swapfile
+          sudo swapon /swapfile
+          free -h
+          df -h
 
       - name: Build vendorbootimage
         run: |
           cd $GITHUB_WORKSPACE/twrp
           source build/envsetup.sh
-          export TARGET_RELEASE=trunk_staging
           export ALLOW_MISSING_DEPENDENCIES=true
           export LC_ALL=C
           lunch omni_gold-ap2a-eng
-          mka vendorbootimage -j$(nproc --all)
+          mka vendorbootimage -j4
 
       - name: Upload artifacts
         if: always()
