@@ -69,6 +69,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/twrp
           source build/envsetup.sh
+          export TARGET_RELEASE=trunk_staging
           export ALLOW_MISSING_DEPENDENCIES=true
           export LC_ALL=C
           lunch omni_gold-eng
