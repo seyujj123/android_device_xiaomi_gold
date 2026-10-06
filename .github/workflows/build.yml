@@ -72,7 +72,7 @@ jobs:
           export TARGET_RELEASE=trunk_staging
           export ALLOW_MISSING_DEPENDENCIES=true
           export LC_ALL=C
-          lunch omni_gold-eng
+          lunch omni_gold-trunk_staging-eng
           mka vendorbootimage -j$(nproc --all)
 
       - name: Upload artifacts
